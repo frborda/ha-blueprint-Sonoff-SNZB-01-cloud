@@ -1,6 +1,6 @@
 blueprint:
-  name: Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
-  description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
+  name: Sonoff SNZB-01 Zigbee Wireless Switch
+  description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch
   domain: automation
   input:
     sensor:
