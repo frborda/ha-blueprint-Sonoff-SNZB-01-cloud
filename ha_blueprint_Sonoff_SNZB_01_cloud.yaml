@@ -39,11 +39,11 @@ state:
     command: "{{ trigger.to_state.state }}"
 - choose:
   - conditions: 
-    - "{{ command == 'single' }}"
+    - "{{ command == 'single_press' }}"
     sequence: !input "single_press"
   - conditions: 
-    - "{{ command == 'double' }}"
+    - "{{ command == 'double_press' }}"
     sequence: !input "double_press"
   - conditions: 
-    - "{{ command == 'long' }}"
+    - "{{ command == 'long_press' }}"
     sequence: !input "long_press"
