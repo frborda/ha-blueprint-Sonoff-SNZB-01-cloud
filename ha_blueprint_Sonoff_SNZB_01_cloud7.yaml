@@ -27,7 +27,7 @@ blueprint:
       default: []
       selector:
         action: {}
-  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_cloud6.yaml
+  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_cloud7.yaml
 mode: restart
 max_exceeded: silent
 trigger:
@@ -36,7 +36,7 @@ trigger:
   entity_id: !input "sensor"
 state:
 - variables:
-    command: "{{ trigger.event.data.state }}"
+    command: "{{ trigger.state }}"
 - choose:
   - conditions: 
     - "{{ command == 'single' }}"
