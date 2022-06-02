@@ -3,7 +3,7 @@ blueprint:
   description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
   domain: automation
   input:
-    sensor:
+    switch:
       name: Sonoff SNZB-01 Zigbee Wireless Switch
       description: Sonoff SNZB-01 Zigbee Wireless Switch to use
       selector:
@@ -27,14 +27,14 @@ blueprint:
       default: []
       selector:
         action: {}
-  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_cloud7.yaml
+  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_cloud8.yaml
 mode: restart
 max_exceeded: silent
 trigger:
 - platform: event
   event_type: state_changed
-  entity_id: !input "sensor"
-state:
+  entity_id: !input "switch"
+action:
 - variables:
     command: "{{ trigger.state }}"
 - choose:
