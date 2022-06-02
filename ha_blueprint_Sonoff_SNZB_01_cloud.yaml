@@ -1,3 +1,69 @@
+TARJETA PRIORITY PASS N° : 469771178134 | BORDA/L FERNANDO
+FerBorda5
+
+
+alias: Puls Hab 1 Single
+description: ''
+trigger:
+  - platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: sensor.sonoff_a44000735c
+condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.sonoff_a44000735c
+        state: single
+action: []
+mode: single
+
+alias: Puls Hab 1 Double
+description: ''
+trigger:
+  - platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: sensor.sonoff_a44000735c
+condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.sonoff_a44000735c
+        state: double
+action: []
+mode: single
+
+alias: Puls Hab 1 Long
+description: ''
+trigger:
+  - platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: sensor.sonoff_a44000735c
+condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: sensor.sonoff_a44000735c
+        state: long
+action: []
+mode: single
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------
+
+
 blueprint:
   name: Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
   description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
@@ -32,7 +98,7 @@ mode: restart
 max_exceeded: silent
 trigger:
 - platform: event
-  entity_id: !input "switch"
+  entity_id: !input "sensor"
   attribute: state
 state:
 - variables:
