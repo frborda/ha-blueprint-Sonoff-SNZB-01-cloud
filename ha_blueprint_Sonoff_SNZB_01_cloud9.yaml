@@ -31,7 +31,7 @@ blueprint:
 mode: restart
 max_exceeded: silent
 trigger:
-	platform: event
+  platform: event
   event_type: state_changed
   event_data:
   	entity_id: !input switch
