@@ -9,19 +9,19 @@ blueprint:
       selector:
         entity:
           domain: sensor
-    single_press:
+    single:
       name: Single Press
       description: Action to run on single press
       default: []
       selector:
         action: {}
-    double_press:
+    double:
       name: Double Press
       description: Action to run on double press
       default: []
       selector:
         action: {}
-    long_press:
+    long:
       name: Long Press
       description: Action to run on long press (4 seconds)
       default: []
@@ -39,11 +39,11 @@ state:
     command: "{{ trigger.to_state.state }}"
 - choose:
   - conditions: 
-    - "{{ command == 'single_press' }}"
-    sequence: !input "single_press"
+    - "{{ command == 'single' }}"
+    sequence: !input "single"
   - conditions: 
-    - "{{ command == 'double_press' }}"
-    sequence: !input "double_press"
+    - "{{ command == 'double' }}"
+    sequence: !input "double"
   - conditions: 
-    - "{{ command == 'long_press' }}"
-    sequence: !input "long_press"
+    - "{{ command == 'long' }}"
+    sequence: !input "long"
