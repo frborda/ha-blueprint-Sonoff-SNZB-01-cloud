@@ -3,7 +3,7 @@ blueprint:
   description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
   domain: automation
   input:
-    switch:
+    sensor:
       name: Sonoff SNZB-01 Zigbee Wireless Switch
       description: Sonoff SNZB-01 Zigbee Wireless Switch to use
       selector:
@@ -37,3 +37,13 @@ trigger:
 state:
 - variables:
     command: "{{ trigger.to_state.state }}"
+- choose:
+  - conditions: 
+    - "{{ command == 'single_press' }}"
+    sequence: !input "single"
+  - conditions: 
+    - "{{ command == 'double_press' }}"
+    sequence: !input "double"
+  - conditions: 
+    - "{{ command == 'long_press' }}"
+    sequence: !input "long"
