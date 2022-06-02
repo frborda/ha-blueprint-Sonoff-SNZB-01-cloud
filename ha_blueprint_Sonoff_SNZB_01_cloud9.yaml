@@ -1,7 +1,8 @@
 blueprint:
-  name: Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
+  name: Sonoff SNZB-01 Cloud
   description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch (Cloud)
   domain: automation
+  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_cloud9.yaml
   input:
     switch:
       name: Sonoff SNZB-01 Zigbee Wireless Switch
@@ -10,33 +11,33 @@ blueprint:
         entity:
           domain: sensor
     single:
-      name: Single
+      name: Single Press
       description: Action to run on single press
       default: []
       selector:
         action: {}
     double:
-      name: Double
+      name: Double Press
       description: Action to run on double press
       default: []
       selector:
         action: {}
     long:
-      name: Long
-      description: Action to run on long press (4 seconds)
+      name: Long Press
+      description: Action to run on long press
       default: []
       selector:
         action: {}
-  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_cloud8.yaml
 mode: restart
 max_exceeded: silent
 trigger:
-- platform: event
+	platform: event
   event_type: state_changed
-  entity_id: !input "switch"
+  event_data:
+  	entity_id: !input switch
 action:
 - variables:
-    command: "{{ trigger.state }}"
+    command: "{{ trigger.event_data.state }}"
 - choose:
   - conditions: 
     - "{{ command == 'single' }}"
