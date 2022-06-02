@@ -10,19 +10,19 @@ blueprint:
         entity:
           domain: sensor
     single:
-      name: Single Press
+      name: Single
       description: Action to run on single press
       default: []
       selector:
         action: {}
     double:
-      name: Double Press
+      name: Double
       description: Action to run on double press
       default: []
       selector:
         action: {}
     long:
-      name: Long Press
+      name: Long
       description: Action to run on long press (4 seconds)
       default: []
       selector:
