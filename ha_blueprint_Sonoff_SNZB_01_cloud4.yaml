@@ -32,7 +32,7 @@ mode: restart
 max_exceeded: silent
 trigger:
 - platform: event
-	event_type: state_changed
+  event_type: state_changed
 state:
 - variables:
     command: "{{ trigger.event.data.state }}"
