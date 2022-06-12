@@ -1,0 +1,50 @@
+blueprint:
+  name: Sonoff SNZB-01 USB Dongle
+  description: Automate your Sonoff SNZB-01 Zigbee Wireless Switch (USB Dongle) by Fernando Borda
+  domain: automation
+  source_url: https://github.com/frborda/ha-blueprint-Sonoff-SNZB-01-cloud/blob/main/ha_blueprint_Sonoff_SNZB_01_USB_Dongle_1.yaml
+  input:
+    switch:
+      name: Sonoff SNZB-01 Zigbee Wireless Switch
+      description: Sonoff SNZB-01 Zigbee Wireless Switch to use
+      selector:
+        entity:
+          domain: button
+    single:
+      name: Single Press
+      description: Action to run on single press
+      default: []
+      selector:
+        action: {}
+    double:
+      name: Double Press
+      description: Action to run on double press
+      default: []
+      selector:
+        action: {}
+    hold:
+      name: Hold Press
+      description: Action to run on Hold press
+      default: []
+      selector:
+        action: {}
+mode: restart
+max_exceeded: silent
+variables:
+  action: '{{ trigger.to_state.state }}'
+trigger:
+- platform: state
+  entity_id: !input 'switch'
+condition: []
+action:
+- choose:
+  - conditions:
+    - '{{ action == ''single'' }}'
+    sequence: !input 'single'
+  - conditions:
+    - '{{ action == ''double'' }}'
+    sequence: !input 'double'
+  - conditions:
+    - '{{ action == ''hold'' }}'
+    sequence: !input 'hold'
+  default: []
